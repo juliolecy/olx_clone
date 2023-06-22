@@ -20,7 +20,10 @@ const Header = () => {
                 <Link to=''>Login</Link>
               </li>
               <li>
-                <Link to=''>Signin</Link>
+                <Link to=''>SignIn</Link>
+              </li>
+              <li className='button'>
+                <Link to=''>Poste um anúncio</Link>
               </li>
             </ul>
           </nav>
