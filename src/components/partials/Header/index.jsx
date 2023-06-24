@@ -1,7 +1,9 @@
 import * as k from './styles'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { isLogged } from '../../../helpers/AuthHandler'
 
 const Header = () => {
+  let logged = isLogged();
 
     return (
       <k.HeaderArea>
@@ -16,15 +18,35 @@ const Header = () => {
 
           <nav>
             <ul>
+              {logged && <>
+                <li>
+                <Link to=''>Minha conta</Link>
+              </li>
+             
               <li>
-                <Link to=''>Login</Link>
+                <Link className='button' to=''>Sair</Link>
+              </li>
+              <li >
+                <Link className='button' to='/post-an-add'>Poste um anúncio</Link>
+              </li>
+              </>
+             
+              }
+
+              {!logged && 
+              <>
+                <li>
+                <Link to='/singin'>Login</Link>
               </li>
               <li>
-                <Link to=''>SignIn</Link>
+                <Link to='/signup'>Cadastrar</Link>
               </li>
-              <li className='button'>
-                <Link to=''>Poste um anúncio</Link>
+              <li >
+                <Link className='button' to='/signin'>Poste um anúncio</Link>
               </li>
+              </>
+              }
+           
             </ul>
           </nav>
 
