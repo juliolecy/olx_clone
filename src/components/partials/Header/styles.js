@@ -47,10 +47,13 @@ nav{
    li{
       margin: 0 20px;
 
-      a{
+      a, button{
          color: #000;
          font-size: 14px;
          transition: 0.4s;
+         border: 0;
+         background: none;
+         outline: none;
 
          &:hover{
             color: #999;

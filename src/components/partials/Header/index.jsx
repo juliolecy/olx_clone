@@ -1,9 +1,14 @@
 import * as k from './styles'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
-import { isLogged } from '../../../helpers/AuthHandler'
+import { doLogout, isLogged } from '../../../helpers/AuthHandler'
 
 const Header = () => {
   let logged = isLogged();
+
+  const handleLogout = () =>{
+    doLogout();
+    window.location.href = '/';
+  }
 
     return (
       <k.HeaderArea>
@@ -24,7 +29,7 @@ const Header = () => {
               </li>
              
               <li>
-                <Link className='button' to=''>Sair</Link>
+                <button onClick={handleLogout}>Sair</button>
               </li>
               <li >
                 <Link className='button' to='/post-an-add'>Poste um anúncio</Link>
@@ -36,7 +41,7 @@ const Header = () => {
               {!logged && 
               <>
                 <li>
-                <Link to='/singin'>Login</Link>
+                <Link to='/signin'>Login</Link>
               </li>
               <li>
                 <Link to='/signup'>Cadastrar</Link>
