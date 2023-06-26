@@ -1,12 +1,13 @@
-import * as k from './styles'
+import React from 'react';
+import { FooterArea } from './styles';
 
-function Footer() {
-
-  return (
-<k.FooterArea>
-
-</k.FooterArea>
-  )
+const Footer = () => {
+    return (
+        <FooterArea>
+            Todos os direitos reservados<br/>
+            JLins
+        </FooterArea>
+    );
 }
 
-export default Footer
+export default Footer;
