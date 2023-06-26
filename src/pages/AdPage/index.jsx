@@ -36,6 +36,7 @@ const Page = ()=> {
     return (    
        
 <PageContainer>
+    {adInfo.category &&
     <k.BreadChumb>
         Você está aqui:
         <Link to='/'>Home</Link>
@@ -45,6 +46,7 @@ const Page = ()=> {
         <Link to={`/ads?state=${adInfo.stateName}&cat=${adInfo.category.slug}`}>{adInfo.category.name}</Link>
         / {adInfo.title}
     </k.BreadChumb>
+    }
     <k.PageArea>    
         <div className='leftSide'>
             <div className='box'>

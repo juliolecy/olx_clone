@@ -1,6 +1,29 @@
-const BASEAPI = 'http://alunos.b7web.com.br:501'
 import Cookies from 'js-cookie'
 import QueryString from 'qs' 
+
+const BASEAPI = 'http://alunos.b7web.com.br:501'
+
+const apiFetchFile = async (endpoint, body)=>{
+    if(!body.token){
+        let token = Cookies.get('token')
+        if(token){
+            body.append('token', token)
+        }
+    }
+    
+
+    const res = await fetch(BASEAPI+endpoint, {
+        method:'POST',
+        body
+    })
+    const json = await res.json()
+    
+    if(json.notallowed){
+        window.location.href = '/signin';
+        return
+    }
+    return json;
+}
 
 const apiFetchPost = async (endpoint, body) =>{
     if(!body.token){
@@ -9,7 +32,7 @@ const apiFetchPost = async (endpoint, body) =>{
             body.token = token
         }
     }
-
+    
 
     const res = await fetch(BASEAPI+endpoint, {
         method:'POST',
@@ -19,6 +42,24 @@ const apiFetchPost = async (endpoint, body) =>{
         },
         body: JSON.stringify(body)
     })
+    const json = await res.json()
+    
+    if(json.notallowed){
+        window.location.href = '/signin';
+        return
+    }
+    return json;
+}
+const apiFetchGet = async (endpoint, body = []) =>{
+    if(!body.token){
+        let token = Cookies.get('token')
+        if(token){
+            body.token = token
+        }
+    }
+
+
+    const res = await fetch(`${BASEAPI+endpoint}?${QueryString.stringify(body)}`)
     const json = await res.json()
 
     if(json.notallowed){
@@ -64,28 +105,18 @@ const OlxAPI = {
             {id, other}
         )
         return json
+    },
+    addAd: async(fData)=>{
+        const json = await apiFetchFile(
+            '/ad/add',
+            fData
+        )
+        return json
     }
+
 
 }
 
 export default ()=>OlxAPI;
 
-const apiFetchGet = async (endpoint, body = []) =>{
-    if(!body.token){
-        let token = Cookies.get('token')
-        if(token){
-            body.token = token
-        }
-    }
-
-
-    const res = await fetch(`${BASEAPI+endpoint}?${QueryString.stringify(body)}`)
-    const json = await res.json()
-
-    if(json.notallowed){
-        window.location.href = '/signin';
-        return
-    }
-    return json;
-}
 
