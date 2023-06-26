@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Item} from './styles';
+import * as k from './styles';
 
 export default (props) => {
 
-    let price = '';
+    let price = props.data.priceNegotiable ? 'Preço Negociável' : `R$ ${props.data.price}`
 
-    if(props.data.priceNegotiable) {
-        price = 'Preço Negociável';
-    } else {
-        price = `R$ ${props.data.price}`
-    }
     return (
-        <Item className="aditem">
+        <k.Item className="aditem">
             <Link to={`/ad/${props.data.id}`}>
                 <div className="itemImage">
                     <img src={props.data.image} alt="" />
@@ -21,6 +16,6 @@ export default (props) => {
                 <div className="itemPrice">{price}</div>
             </Link>
 
-        </Item>
+        </k.Item>
     );
 }
