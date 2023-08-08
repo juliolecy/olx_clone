@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie'
 import QueryString from 'qs' 
 
-// const BASEAPI = 'https://olx-clone-backend-ykxt.onrender.com'
-const BASEAPI = 'http://localhost:5000'
+ const BASEAPI = 'https://olx-clone-backend-ykxt.onrender.com'
+//const BASEAPI = 'http://localhost:5000'
 
 const apiFetchFile = async (endpoint, body)=>{
     if(!body.token){
