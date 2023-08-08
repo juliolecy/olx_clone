@@ -14,10 +14,9 @@ const Page = ()=> {
     const [adInfo, setAdInfo] = useState({})
 
     useEffect(()=>{
-        const getAdInfo = async(id)=>{
-            const json = await api.getAd(id, true)
+        const getAdInfo = async(hash)=>{
+            const json = await api.getAd(hash, true)
             setAdInfo(json);
-            console.log(json)
             setLoading(false)
         }
         getAdInfo(id);

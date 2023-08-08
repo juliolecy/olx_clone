@@ -42,6 +42,7 @@ const Page = () => {
             q, cat, state, 
             offset
         });
+        console.log(json)
         setAdList(json.ads)
         setAdsTotal(json.total)
         setResultOpacity(1)
