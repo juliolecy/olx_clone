@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
 `
 
 export const PageTitle = styled.h1`
-   font-size: 27px
+   font-size: 27px;
 `
 
 export const PageBody = styled.div``

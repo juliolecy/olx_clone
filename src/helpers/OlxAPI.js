@@ -1,7 +1,8 @@
 import Cookies from 'js-cookie'
 import QueryString from 'qs' 
 
-const BASEAPI = 'http://alunos.b7web.com.br:501'
+// const BASEAPI = 'https://olx-clone-backend-ykxt.onrender.com'
+const BASEAPI = 'http://localhost:5000'
 
 const apiFetchFile = async (endpoint, body)=>{
     if(!body.token){
@@ -43,6 +44,7 @@ const apiFetchPost = async (endpoint, body) =>{
         body: JSON.stringify(body)
     })
     const json = await res.json()
+
     
     if(json.notallowed){
         window.location.href = '/signin';
@@ -77,7 +79,7 @@ const OlxAPI = {
         return json
     },
     register: async(name, email, password, stateLoc)=>{
-        const json = await apiFetchPost('/user/signup/',
+        const json = await apiFetchPost('/user/signup',
         {name,email, password, state:stateLoc}
         )
         return json;
@@ -90,6 +92,7 @@ const OlxAPI = {
         const json = await apiFetchGet(
             '/categories'
         )
+      
         return json.categories
     },
     getAds: async (options)=>{

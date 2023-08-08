@@ -5,8 +5,8 @@ import Header from './components/partials/Header'
 import Footer from './components/partials/Footer'
 import * as k from './components/MainComponents'
 import './App.css'
-function App(props) {
 
+function App(props) {
   return (
     <BrowserRouter>
     <k.Template>
@@ -24,6 +24,8 @@ const mapStateProps = (state) =>{
 }
 }
 const mapDispatchToProps = (dispatch)=>{
-  return
+  return {
+    
+  }
 }
 export default connect(mapStateProps, mapDispatchToProps )(App)

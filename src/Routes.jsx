@@ -12,26 +12,26 @@ import Ads from "./pages/Ads";
 export default () =>{
     return(
         <Switch>
-                <RouteHandler exact path='/'>
+                <RouteHandler private={false} exact path='/'>
                         <Home/>
                 </RouteHandler>
 
-                <RouteHandler exact path='/sobre'>
+                <RouteHandler private={false} exact path='/sobre'>
                         <About/>
                 </RouteHandler>
-                <RouteHandler exact path='/signin'>
+                <RouteHandler private={false} exact path='/signin'>
                         <SignIn/>
                 </RouteHandler>
-                <RouteHandler exact path='/signup'>
+                <RouteHandler private={false} exact path='/signup'>
                         <SignUp/>
                 </RouteHandler>
-                <RouteHandler exact path='/ad/:id'>
+                <RouteHandler private={false} exact path='/ad/:id'>
                         <AdPage/>
                 </RouteHandler>
-                <RouteHandler private exact path='/post-an-ad'>
+                <RouteHandler private={true} exact path='/post-an-ad'>
                         <AddAd/>
                 </RouteHandler>
-                <RouteHandler exact path='/ads'>
+                <RouteHandler private={false} exact path='/ads'>
                         <Ads/>
                 </RouteHandler>
                 <RouteHandler>

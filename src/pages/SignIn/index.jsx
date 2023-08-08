@@ -4,7 +4,7 @@ import { ErrorMessage, PageContainer, PageTitle } from '../../components/MainCom
 import OlxAPI from '../../helpers/OlxAPI'
 import { doLogin } from '../../helpers/AuthHandler'
 
-                                    const Page = ()=> {
+const Page = ()=> {
 
     const api = OlxAPI();
 
