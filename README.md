@@ -22,14 +22,14 @@ Funciona em conjunto com outro projeto secundário: <a target='_blank' href='htt
 --- 
 ## ⚙️ Funcionalidades
 
-<div align="center">
-✅ Filtragem por categoria
-✅ Pesquisa
-✅ Login
-✅ Cadastro
-✅ Adicionar anúncios
-✅ Editar anúncios
-✅ Mostrar anúncios de um mesmo vendedor
+<div >
+<p>✅ Filtragem por categoria</p>
+<p>✅ Pesquisa</p>
+<p>✅ Login</p>
+<p>✅ Cadastro</p>
+<p>✅ Adicionar anúncios</p>
+<p>✅ Editar anúncios</p>
+<p>✅ Mostrar anúncios de um mesmo vendedor</p>
 </div>
 
 ---
@@ -37,8 +37,10 @@ Funciona em conjunto com outro projeto secundário: <a target='_blank' href='htt
 
 ### Requisitos
 
-🔵 Node
-🔵 NPM
+#### Node
+#### NPM
+#### Typescript
+
 
 #### 🧭 Rodando a aplicação
 
@@ -64,6 +66,7 @@ $ npm run dev
 
 ## 🛠 Tecnologias
 -   **React**
+-  **Typescript**
 -   **Styled Components**
 -   **js-cookie**
 
