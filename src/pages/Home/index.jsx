@@ -9,6 +9,7 @@ import { RxExit } from 'react-icons/rx'
 import { GoLocation } from 'react-icons/go'
 import { AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 import { doLogout, isLogged } from '../../helpers/AuthHandler'
+import Loading from '../../components/partials/Loading'
 
 const Page = () => {
     const api = OlxAPI();
@@ -54,6 +55,7 @@ const Page = () => {
     
 return(
 <>
+
             <k.SearchArea>
                 <PageContainer>
 
@@ -70,17 +72,28 @@ return(
                 </PageContainer>
             </k.SearchArea>
 
+         
+        
             <PageContainer>
                 <k.PageArea>
-                    <h2>Anúncios recents</h2>
+                    <h2>Anúncios recentes</h2>
+
+                    {adList.length ===0 &&
+            <Loading/>
+        }
+        {adList.length > 0 &&
+        <>
                     <div className='list'>
                         {adList.map((item, index) => (
                             <AdItem key={index} data={item} />
-                        ))}
+                            ))}
                     </div>
+                            </>
+                }
                     <Link to='/ads' className='seeAllLink'>Ver todos</Link>
 
                     <hr />
+
 
 
                 </k.PageArea>

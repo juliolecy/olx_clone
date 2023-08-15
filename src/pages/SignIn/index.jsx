@@ -3,7 +3,7 @@ import * as k from './styles'
 import { ErrorMessage, PageContainer, PageTitle } from '../../components/MainComponents'
 import OlxAPI from '../../helpers/OlxAPI'
 import { doLogin } from '../../helpers/AuthHandler'
-import Olx from '../../../public/olx'
+import Olx from '/public/olx'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 const Page = ()=> {
 
