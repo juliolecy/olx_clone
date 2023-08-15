@@ -3,7 +3,8 @@ import * as k from './styles'
 import { ErrorMessage, PageContainer, PageTitle } from '../../components/MainComponents'
 import OlxAPI from '../../helpers/OlxAPI'
 import { doLogin } from '../../helpers/AuthHandler'
-
+import Olx from '../../../public/olx'
+import { Link } from 'react-router-dom/cjs/react-router-dom'
 const Page = ()=> {
 
     const api = OlxAPI();
@@ -31,17 +32,18 @@ const Page = ()=> {
     }
 
     return (    
-        <PageContainer>
-            <PageTitle>Login</PageTitle>
-            <k.PageArea>    
-                {error && 
+        <k.Container>
+
+            <Olx/>
+            <h1>Acesse sua conta</h1>
+
+            {error && 
                 <ErrorMessage>{error}</ErrorMessage>
                 }
 
             <form onSubmit={handleSubmit}>
-                <label className='area'>
-                    <div className='area--title'>E-mail</div>
-                    <div className='area--input'>
+                <h2>Email</h2>
+                <div className='area--input'>
                         <input disabled={disabled} 
                         type="email" 
                         value={email} 
@@ -49,10 +51,7 @@ const Page = ()=> {
                         required
                         />
                     </div>
-                </label>
-
-                <label className='area'>
-                    <div className='area--title'>Senha</div>
+                    <h2>Senha</h2>
                     <div className='area--input'>
                         <input disabled={disabled} 
                         ype="password" 
@@ -61,29 +60,32 @@ const Page = ()=> {
                         required
                         />
                     </div>
-                </label>
 
-                <label className='area'>
-                    <div className='area--title'>Lembrar senha</div>
-                    <div className='area--input'>
+               
+
+                    <div className='remember--password'>
+                        <h3>
+                        Lembrar senha
+                        </h3>
+                        
                         <input disabled={disabled} 
                         type="checkbox" 
                         checked={rememberPassword} 
                         onChange={()=>{setRememberPassword(!rememberPassword)}}
-                    
                         />
-                    </div>
-                </label>
+                        </div>
+                    
 
-                <label className='area'>
-                    <div className='area--title'></div>
-                    <div className='area--input'>
-                        <button disabled={disabled}>Login</button>
-                    </div>
-                </label>
+                        <button className='button--login'disabled={disabled}>Login</button>
+
             </form>
-            </k.PageArea>
-        </PageContainer>
+
+<div className="signup">
+    <span>Não tem uma conta?</span>
+    <Link to='/signup'>Cadastre-se</Link>
+</div>
+           
+        </k.Container>
 
     )
 }
