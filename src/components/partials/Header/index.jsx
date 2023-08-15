@@ -38,6 +38,7 @@ return (
                   <div className="wall"></div>
                   <GoLocation />
                   <select name="state">
+                      <option></option>
                       {stateList.map((item, index) => (
                           <option key={index} value={item.name}>{item.name}</option>
                       ))}
