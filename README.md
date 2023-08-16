@@ -15,6 +15,12 @@
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
 
+<div  align="center">
+  <a>
+    <img src="https://skillicons.dev/icons?i=react,styledcomponents" />
+  </a>
+</div>
+
 ## 💻 Sobre o projeto
 Esta é uma reprodução da interface bem como funcionalidades da página da Olx.
 Funciona em conjunto com outro projeto secundário: <a target='_blank' href='https://github.com/juliolecy/olx_clone_backend'>Olx_clone_backend</a>
@@ -61,7 +67,6 @@ $ npm run dev
 # Acesse 'http://localhost:5173' para visualizar a aplicação
 
 ```
-
 ---
 
 ## 🛠 Tecnologias
@@ -70,7 +75,7 @@ $ npm run dev
 -   **Styled Components**
 -   **js-cookie**
 
-> Veja o arquivo  [package.json](https://github.com/juliolecy/olx_clone/master/package.json)
+> Veja o arquivo  [package.json](https://github.com/juliolecy/olx_clone/blob/master/package.json))
 
 ---
 
