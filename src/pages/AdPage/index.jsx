@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css';
 import AdItem from '../../components/partials/AdItem'
+import { BsChat } from 'react-icons/bs'
 const Page = ()=> {
     const api = OlxAPI()
     const {id} = useParams()
@@ -20,6 +21,7 @@ const Page = ()=> {
             setLoading(false)
         }
         getAdInfo(id);
+        console.log(adInfo)
     },[])
 
     const formatDate = (date) =>{
@@ -46,12 +48,12 @@ const Page = ()=> {
         / {adInfo.title}
     </k.BreadChumb>
     }
-    <k.PageArea>    
-        <div className='leftSide'>
-            <div className='box'>
-                <div className='adImage'>
-                {loading && <k.Fake height={300}/>}
-                {adInfo.images &&
+
+    <k.Content>
+        <div className="content--left">
+        {adInfo.title && <h2>{adInfo.title}</h2>}
+            <div className="ad--image">
+            {adInfo.images && adInfo.images.length > 0 &&
                     <Slide>
                         {adInfo.images.map((img, index)=> 
                         <div className='each-slide' key={index}>
@@ -59,6 +61,58 @@ const Page = ()=> {
                         </div>)}
                     </Slide>
                 }
+            </div>
+        </div>
+
+        <div className="content--right">
+                <div className="price--container">
+                <svg  width="24" height="64" className="sc-VigVT fyGuQe" viewBox="0 0 24 64"><path fill="#6e0ad6" d="M22.557 0h1.442v64h-1.442a8 8 0 01-6.84-3.851l-14.557-24a8 8 0 010-8.298l14.557-24A8 8 0 0122.557 0z"></path></svg>
+                    <div className="price">
+                    {adInfo.priceNegotiable &&
+                    'Preço Negociável'
+                }
+                {!adInfo.priceNegotiable && adInfo.price &&
+                    <div className='price'>
+                        Preço:
+                        <span>R$ {adInfo.price}</span>
+                        </div>
+                }
+
+                    </div>
+                </div>
+
+                <div className="ad--info">
+                {adInfo.title && 
+                        <h2>{adInfo.title}</h2>
+                    }
+
+                    <div className="buttons">
+                        <button className="buy">
+                            Comprar online
+                        </button>
+
+                        <button className="chat">
+                            <BsChat/> Chat
+                        </button>
+                    </div>
+
+                    {adInfo.dateCreated &&
+                        <small>Criado em {formatDate(adInfo.dateCreated)}</small>}
+                </div>
+        </div>
+    </k.Content>
+
+    <k.PageArea>    
+        <div className='leftSide'>
+            <div className='box'>
+                <div className='adImage'>
+                {loading && <k.Fake height={300}/>}
+                {adInfo.images && adInfo.images.length === 0 &&
+                <k.FakeImage>
+
+                </k.FakeImage>
+                }
+                
                 </div>
 
                 <div className='adInfo'>

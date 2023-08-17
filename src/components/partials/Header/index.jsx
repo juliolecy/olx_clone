@@ -7,12 +7,19 @@ import { RxExit } from 'react-icons/rx'
 import { GoLocation } from 'react-icons/go'
 import { AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 import { doLogout, isLogged } from '../../../helpers/AuthHandler' 
-
+import {BsChevronUp, BsChevronDown} from 'react-icons/bs'
 const Header = () => {
   const api = OlxAPI();
   let logged = isLogged();
 
+
   const [stateList, setStateList] = useState([])
+  const [open,setOpen] = useState(false)
+
+  const handleOpen = () =>{
+    setOpen(!open)
+    console.log(open)
+  }
 
   const handleLogout = () => {
     doLogout();
@@ -30,7 +37,10 @@ useEffect(() => {
 return (
   <>
       <k.Header>
+        <a href='/'>
+
           <Olx />
+        </a>
 
           <div className="search--container">
               <form method='GET' action='/ads'>
@@ -47,6 +57,7 @@ return (
               </form>
           </div>
 
+    {/* Buttons */}
           {logged &&
               <div className="buttons">
                   <div className="anunciar">
@@ -75,6 +86,29 @@ return (
                   </div>
               </div>
           }
+
+          {/* Menu scroll */}
+
+{!logged &&
+
+<k.MenuMobile open={open}>
+    <div 
+    className="chevron"
+    onClick={handleOpen}>
+        <BsChevronDown />
+    </div>
+    <ul>
+        <li>
+        <Link to='/signin'>Entrar</Link>
+        </li>
+        <li>
+        <Link to='/signup'>Cadastrar</Link>
+        </li>
+    </ul>
+
+</k.MenuMobile>
+}
+          
       </k.Header>
 
       </>

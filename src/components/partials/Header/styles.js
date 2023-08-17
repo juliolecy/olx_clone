@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
+position: relative;
 padding: 1rem;
 display:flex;
 flex-direction: row;
@@ -8,13 +9,15 @@ align-items: center;
 background-color: #fff;
 justify-content: space-between;
 box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+a{
 svg{
-    width: 60px;
+    min-width: 40px;
+    max-width: 60px;
 }
-
+}
 .search--container{
-    border: 1px solid #9c9c9c;
-    border-radius: 13px;
+    border: 1px solid #c5c5c5;;
+    border-radius: 8px;
     max-width: 500px;
     width: 100%;
     margin: 0 2rem;
@@ -24,6 +27,7 @@ svg{
         align-items: center;
         display: flex;
         padding: 0.4rem;
+        min-width: 260px;
 
         input{
             border: none;
@@ -118,4 +122,78 @@ a{
     }
 }
     
-}`
+}
+
+@media screen and (max-width:762px){
+    .buttons {
+        .anunciar{
+            width:100px
+        }
+    .login{
+            width:100px
+    }
+    }
+}
+
+@media screen and (max-width:762px){
+    .buttons {
+        display:none;
+    }
+}
+
+@media screen and (max-width:556px){
+    flex-direction: column;
+    gap: 2rem;
+}
+`
+
+export const MenuMobile = styled.div`
+    bottom: ${({open})=> open ? '44px' : '-58px'};
+    left: 50%;
+    transform: translate(-50%, 50%);
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #fff;
+    border-radius: 15px;
+    justify-content: center;
+    transition: .5s all ease ;
+    position: fixed;
+
+.chevron{
+    position: absolute;
+    top: -17px;
+    background: #fff;
+    border-radius: 37%;
+    left: 47px;
+    padding: 4px;
+    svg{
+        cursor: pointer;
+    }
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    li{
+        margin-bottom: 7px;
+
+        a{
+            text-decoration: none;
+    cursor: pointer;
+    color: #000;
+    transition: 5s ease all;
+            &:hover{
+                color: #757575;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 762px){
+    display:none;
+}
+`

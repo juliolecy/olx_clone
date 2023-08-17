@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as k from './styles'
 import { PageContainer } from '../../components/MainComponents'
 import OlxAPI from '../../helpers/OlxAPI'
@@ -10,9 +10,11 @@ import { GoLocation } from 'react-icons/go'
 import { AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 import { doLogout, isLogged } from '../../helpers/AuthHandler'
 import Loading from '../../components/partials/Loading'
-
+import Banner from '../../assets/banner.png'
+import { BiSolidChevronLeft, BiSolidChevronRight} from 'react-icons/bi'
 const Page = () => {
     const api = OlxAPI();
+    const carousel = useRef(null)
     let logged = isLogged();
 
     const handleLogout = () => {
@@ -50,29 +52,65 @@ const Page = () => {
         }
         getRecentAds();
     }, [])
+    useEffect(()=>{},[])
 
+const handleLeftClick = (e)=>{
+    e.preventDefault();
+    carousel.current.scrollLeft -= carousel.current.offsetWidth;
+}
 
+const handleRightClick = (e)=>{
+    e.preventDefault();
+    carousel.current.scrollLeft += carousel.current.offsetWidth;
+}
     
 return(
 <>
+<k.Banner>
+  <div className="banner">
+  
+  </div>
+</k.Banner>
 
-            <k.SearchArea>
-                <PageContainer>
+<k.Slider>
+    <div className="arrow left">
+    <BiSolidChevronLeft onClick={handleLeftClick}/>
+    </div>
 
-                    <div className='categoryList'>
-                        {categories.map((item, index) => (
-                            <Link key={index}
-                                to={`/ads?cat=${item.slug}`}
-                                className='categoryItem'>
-                                <img src={item.img} alt='' />
-                                <span>{item.name}</span>
-                            </Link>
-                        ))}
-                    </div>
-                </PageContainer>
-            </k.SearchArea>
+    <div className="carousel" ref={carousel}>
 
-         
+    {categories.map((item, index) => (
+                <Link key={index}
+                    to={`/ads?cat=${item.slug}`}
+                    className='categoryItem'>
+                    <img src={item.img} alt='' />
+                    <span>{item.name}</span>
+                </Link>
+            ))}
+             {categories.map((item, index) => (
+                <Link key={index}
+                    to={`/ads?cat=${item.slug}`}
+                    className='categoryItem'>
+                    <img src={item.img} alt='' />
+                    <span>{item.name}</span>
+                </Link>
+            ))}
+       {categories.map((item, index) => (
+                <Link key={index}
+                    to={`/ads?cat=${item.slug}`}
+                    className='categoryItem'>
+                    <img src={item.img} alt='' />
+                    <span>{item.name}</span>
+                </Link>
+            ))}
+      
+      
+    </div>
+
+    <div className="arrow right">
+    <BiSolidChevronRight onClick={handleRightClick}/>
+    </div>
+</k.Slider>
         
             <PageContainer>
                 <k.PageArea>
