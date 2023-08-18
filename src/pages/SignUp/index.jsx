@@ -43,11 +43,11 @@ const Page = () => {
 
         if (json.error) {
             let errormsg = ''
-            if(json.error.email){setError(json.error.email.msg)}
+            if (json.error.email) { setError(json.error.email.msg) }
 
-            if(json.error.name){setError(json.error.name.msg)}
+            if (json.error.name) { setError(json.error.name.msg) }
 
-            
+
 
         } else {
             doLogin(json.token)
@@ -58,171 +58,83 @@ const Page = () => {
     }
 
     return (
-        <>
-                <k.Container>
 
-<Olx/>
-<h1>Cadastre-se</h1>
+        <k.Container>
 
-{error &&
-<ErrorMessage >{error}</ErrorMessage>}
+            <Olx />
+            <h1>Cadastre-se</h1>
 
-<form onSubmit={handleSubmit}>
-    <h2>Nome completo</h2>
-    <div className='area--input'>
-    <input disabled={disabled}
-    type="text"
-    value={name}
-    onChange={e => setName(e.target.value)}
-    required
-    />
-    </div>
-    <h2>Estado</h2>
-        <div className='area--input'>
-        <select required
-                                name=""
-                                id=""
-                                value={stateLoc}
-                                onChange={e => setStateLoc(e.target.value)} >
-                                <option></option>
-                             {stateList.map((i,k)=>
-                                <option key={k}value={i._id}>{i.name}</option>
-                                )}
+            {error &&
+                <ErrorMessage >{error}</ErrorMessage>}
 
-                            </select>
-        </div>
-        <h2>Email</h2>
-        <div className='area--input'>
-                            <input disabled={disabled}
-                                type="email"
-                                value={email}
-                                onChange={e => setEmail(e.target.value)}
-                                required
-                            />
-                        </div>
+            <form onSubmit={handleSubmit}>
+                <h2>Nome completo</h2>
+                <div className='area--input'>
+                    <input disabled={disabled}
+                        type="text"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        required
+                    />
+                </div>
+                <h2>Estado</h2>
+                <div className='area--input'>
+                    <select required
+                        name=""
+                        id=""
+                        value={stateLoc}
+                        onChange={e => setStateLoc(e.target.value)} >
+                        <option></option>
+                        {stateList.map((i, k) =>
+                            <option key={k} value={i._id}>{i.name}</option>
+                        )}
 
-                        <h2>Senha</h2>
-                        <div className='area--input'>
-                            <input disabled={disabled}
-                                type="password"
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
-                                required
-                            />
-                        </div>
+                    </select>
+                </div>
+                <h2>Email</h2>
+                <div className='area--input'>
+                    <input disabled={disabled}
+                        type="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
 
-                        <h2>Confirmar senha</h2>
-                        <div className='area--input'>
-                            <input disabled={disabled}
-                                type="password"
-                                value={confirmPassword}
-                                onChange={e => setConfirmPassword(e.target.value)}
-                                required
-                            />
-                            </div>
-   
+                <h2>Senha</h2>
+                <div className='area--input'>
+                    <input disabled={disabled}
+                        type="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
 
-    
-        
-
-            <button className='button--login'>Fazer cadastro</button>
-
-</form>
-
-<div className="signip">
-<span>Já tem uma conta?</span>
-<Link to='/signup'>Faça login</Link>
-</div>
-
-</k.Container>
-{/* 
-
-        <PageContainer>
-            <PageTitle>Cadastro</PageTitle>
-            <k.PageArea>
-                {error &&
-                    <ErrorMessage>{error}</ErrorMessage>
-                }
-
-                <form onSubmit={handleSubmit}>
-
-                    <label className='area'>
-                        <div className='area--title'>Nome completo</div>
-                        <div className='area--input'>
-                            <input disabled={disabled}
-                                type="text"
-                                value={name}
-                                onChange={e => setName(e.target.value)}
-                                required
-                            />
-                        </div>
-                    </label>
-
-                    <label className='area'>
-                        <div className='area--title'>Estado</div>
-                        <div className='area--input'>
-                            <select required
-                                name=""
-                                id=""
-                                value={stateLoc}
-                                onChange={e => setStateLoc(e.target.value)} >
-                                <option></option>
-                             {stateList.map((i,k)=>
-                                <option key={k}value={i._id}>{i.name}</option>
-                                )}
-
-                            </select>
-                        </div>
-                    </label>
+                <h2>Confirmar senha</h2>
+                <div className='area--input'>
+                    <input disabled={disabled}
+                        type="password"
+                        value={confirmPassword}
+                        onChange={e => setConfirmPassword(e.target.value)}
+                        required
+                    />
+                </div>
 
 
-                    <label className='area'>
-                        <div className='area--title'>E-mail</div>
-                        <div className='area--input'>
-                            <input disabled={disabled}
-                                type="email"
-                                value={email}
-                                onChange={e => setEmail(e.target.value)}
-                                required
-                            />
-                        </div>
-                    </label>
 
-                    <label className='area'>
-                        <div className='area--title'>Senha</div>
-                        <div className='area--input'>
-                            <input disabled={disabled}
-                                type="password"
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
-                                required
-                            />
-                        </div>
-                    </label>
 
-                    <label className='area'>
-                        <div className='area--title'>Confirmar senha</div>
-                        <div className='area--input'>
-                            <input disabled={disabled}
-                                type="password"
-                                value={confirmPassword}
-                                onChange={e => setConfirmPassword(e.target.value)}
-                                required
-                            />
-                        </div>
-                    </label>
 
-                    <label className='area'>
-                        <div className='area--title'></div>
-                        <div className='area--input'>
-                            <button disabled={disabled}>Fazer cadastro</button>
-                        </div>
-                    </label>
-                </form>
-            </k.PageArea>
-        </PageContainer> */}
-        </>
+                <button className='button--login'>Fazer cadastro</button>
 
+            </form>
+
+            <div className="signip">
+                <span>Já tem uma conta?</span>
+                <Link to='/signup'>Faça login</Link>
+            </div>
+
+        </k.Container>
     )
 }
 
