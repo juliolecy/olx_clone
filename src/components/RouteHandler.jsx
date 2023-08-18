@@ -6,7 +6,6 @@ import { isLogged } from '../helpers/AuthHandler';
 export default ({ children, ...rest}) =>{
     let logged = isLogged();
    
-    console.log(rest.private)
     let authorized = (rest.private && !logged) ? false : true;
 
     return (

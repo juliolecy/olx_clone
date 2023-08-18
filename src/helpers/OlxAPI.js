@@ -63,7 +63,6 @@ const apiFetchGet = async (endpoint, body = []) =>{
 
     const res = await fetch(`${BASEAPI+endpoint}?${QueryString.stringify(body)}`)
     const json = await res.json()
-    console.log(json)
 
     if(json.notallowed){
         window.location.href = '/signin';
@@ -108,7 +107,6 @@ const OlxAPI = {
             '/ad/item',
             {id, other}
         )
-        console.log('aquiiiiiii'+json)
       
         return json
     },
