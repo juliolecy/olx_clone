@@ -70,7 +70,7 @@ const Page = () => {
                         <svg width="24" height="64" className="sc-VigVT fyGuQe" viewBox="0 0 24 64"><path fill="#6e0ad6" d="M22.557 0h1.442v64h-1.442a8 8 0 01-6.84-3.851l-14.557-24a8 8 0 010-8.298l14.557-24A8 8 0 0122.557 0z"></path></svg>
                             {adInfo.priceNegotiable &&
                         <div className="price">
-                                'Preço Negociável'
+                                Preço Negociável
                                 </div>
                             }
                             {!adInfo.priceNegotiable && adInfo.price &&
