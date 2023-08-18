@@ -11,7 +11,7 @@ import { AiOutlineSearch, AiOutlineUser } from 'react-icons/ai'
 import { doLogout, isLogged } from '../../helpers/AuthHandler'
 import Loading from '../../components/partials/Loading'
 import Banner from '../../assets/banner.png'
-import { BiSolidChevronLeft, BiSolidChevronRight} from 'react-icons/bi'
+import { BiSolidChevronLeft, BiSolidChevronRight } from 'react-icons/bi'
 const Page = () => {
     const api = OlxAPI();
     const carousel = useRef(null)
@@ -52,90 +52,71 @@ const Page = () => {
         }
         getRecentAds();
     }, [])
-    useEffect(()=>{},[])
+    useEffect(() => { }, [])
 
-const handleLeftClick = (e)=>{
-    e.preventDefault();
-    carousel.current.scrollLeft -= carousel.current.offsetWidth;
-}
+    const handleLeftClick = (e) => {
+        e.preventDefault();
+        carousel.current.scrollLeft -= carousel.current.offsetWidth;
+    }
 
-const handleRightClick = (e)=>{
-    e.preventDefault();
-    carousel.current.scrollLeft += carousel.current.offsetWidth;
-}
-    
-return(
-<>
-<k.Banner>
-  <div className="banner">
-  
-  </div>
-</k.Banner>
+    const handleRightClick = (e) => {
+        e.preventDefault();
+        carousel.current.scrollLeft += carousel.current.offsetWidth;
+    }
 
-<k.Slider>
-    <div className="arrow left">
-    <BiSolidChevronLeft onClick={handleLeftClick}/>
-    </div>
-
-    <div className="carousel" ref={carousel}>
-
-    {categories.map((item, index) => (
-                <Link key={index}
-                    to={`/ads?cat=${item.slug}`}
-                    className='categoryItem'>
-                    <img src={item.img} alt='' />
-                    <span>{item.name}</span>
-                </Link>
-            ))}
-             {categories.map((item, index) => (
-                <Link key={index}
-                    to={`/ads?cat=${item.slug}`}
-                    className='categoryItem'>
-                    <img src={item.img} alt='' />
-                    <span>{item.name}</span>
-                </Link>
-            ))}
-       {categories.map((item, index) => (
-                <Link key={index}
-                    to={`/ads?cat=${item.slug}`}
-                    className='categoryItem'>
-                    <img src={item.img} alt='' />
-                    <span>{item.name}</span>
-                </Link>
-            ))}
-      
-      
-    </div>
-
-    <div className="arrow right">
-    <BiSolidChevronRight onClick={handleRightClick}/>
-    </div>
-</k.Slider>
-        
-            <PageContainer>
-                <k.PageArea>
-                    <h2>Anúncios recentes</h2>
-
-                    {adList.length ===0 &&
-            <Loading/>
-        }
-        {adList.length > 0 &&
+    return (
         <>
+    <k.Banner>
+        <div className="banner">
+
+        </div>
+    </k.Banner>
+
+    <k.Slider>
+        <div className="arrow left">
+            <BiSolidChevronLeft onClick={handleLeftClick} />
+        </div>
+
+        <div className="carousel" ref={carousel}>
+
+        {categories.length === 0 && <Loading />}
+
+        {categories.length > 0 &&
+            categories.map((item, index) => (
+                <Link key={index}
+                    to={`/ads?cat=${item.slug}`}
+                    className='categoryItem'>
+                    <img src={item.img} alt='' />
+                    <span>{item.name}</span>
+                </Link>
+            ))
+        }
+        </div>
+
+        <div className="arrow right">
+            <BiSolidChevronRight onClick={handleRightClick} />
+        </div>
+    </k.Slider>
+
+    <PageContainer>
+        <k.PageArea>
+            <h2>Anúncios recentes</h2>
+
+            {adList.length === 0 && <Loading />}
+
+            {adList.length > 0 &&
+                <>
                     <div className='list'>
                         {adList.map((item, index) => (
                             <AdItem key={index} data={item} />
-                            ))}
+                        ))}
                     </div>
-                            </>
-                }
-                    <Link to='/ads' className='seeAllLink'>Ver todos</Link>
+                </>
+            }
+            <Link to='/ads' className='seeAllLink'>Ver todos</Link>
 
-                    <hr />
-
-
-
-                </k.PageArea>
-            </PageContainer>
+        </k.PageArea>
+    </PageContainer>
         </>
     )
 }
