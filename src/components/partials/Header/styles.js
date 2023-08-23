@@ -153,21 +153,23 @@ export const MenuMobile = styled.div`
     transform: translate(-50%, 50%);
     align-items: center;
     padding: 1rem 2rem;
-    background: #fff;
+    background: #6e0ad6;
     border-radius: 15px;
     justify-content: center;
     transition: .5s all ease ;
     position: fixed;
 
 .chevron{
+    padding: 3px 8px 6px 8px;
     position: absolute;
-    top: -17px;
-    background: #fff;
+    top: -21px;
+    background: #6e0ad6;
     border-radius: 37%;
-    left: 47px;
-    padding: 4px;
+    left: 62px;
+    
     svg{
         cursor: pointer;
+        color: #fff
     }
 }
 
@@ -184,8 +186,8 @@ ul{
         a{
             text-decoration: none;
     cursor: pointer;
-    color: #000;
-    transition: 5s ease all;
+    color: #fff;
+    transition: .5s ease all;
             &:hover{
                 color: #757575;
             }

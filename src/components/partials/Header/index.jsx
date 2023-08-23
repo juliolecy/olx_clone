@@ -99,10 +99,37 @@ return (
     </div>
     <ul>
         <li>
-        <Link to='/signin'>Entrar</Link>
+        <Link
+        onClick={handleOpen}
+        to='/signin'>Entrar</Link>
         </li>
         <li>
-        <Link to='/signup'>Cadastrar</Link>
+        <Link 
+        onClick={handleOpen} 
+        to='/signup'>Cadastrar</Link>
+        </li>
+    </ul>
+
+</k.MenuMobile>
+}
+{logged &&
+
+<k.MenuMobile open={open}>
+    <div 
+    className="chevron"
+    onClick={handleOpen}>
+        <BsChevronDown />
+    </div>
+    <ul>
+        <li>
+        <Link
+        onClick={handleOpen}
+        to='/post-an-ad'>Anunciar</Link>
+        </li>
+        <li>
+        <Link 
+        onClick={()=>alert('Funcionalidade em desenvolvimento')} 
+        to=''>Minha conta</Link>
         </li>
     </ul>
 
