@@ -34,7 +34,9 @@ Funciona em conjunto com outro projeto secundário: <a target='_blank' href='htt
 <p>✅ Login</p>
 <p>✅ Cadastro</p>
 <p>✅ Adicionar anúncios</p>
-<p>✅ Editar anúncios</p>
+<p>🔧 Editar anúncios</p>
+<p>🔧 Exclir anúncios</p>	
+<p>🔧 Minha conta</p>
 <p>✅ Mostrar anúncios de um mesmo vendedor</p>
 </div>
 
